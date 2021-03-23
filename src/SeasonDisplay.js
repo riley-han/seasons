@@ -28,11 +28,10 @@ const SeasonDisplay = (props) =>{
     console.log(season);
     
         return(
-            <div className="ui container">
-            <i className={`${iconName} icon massive`}></i>
-
-                <h1>{text}</h1>
-                <i className={`${iconName} icon massive`}></i>
+            <div className={`season-display ${season}`}>
+            <i className={`${iconName} icon massive`} id="left"></i>
+                <h1 className="displayedMessage">{text}</h1>
+                <i className={`${iconName} icon massive`} id="right"></i>
             </div>
         )
     }

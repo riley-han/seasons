@@ -1,5 +1,24 @@
+#left{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+#right{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
 
+.season-display{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
 
-body{
-    background-color: white;
+.Winter{
+    background-color: rgb(150, 222, 247);
+}
+.Summer{
+    background-color: rgb(252, 240, 133);
 }
