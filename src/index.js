@@ -5,21 +5,22 @@ import SeasonDisplay from './SeasonDisplay';
 
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {lat: null};
-    }
-    render() {
+    state = {lat: null, errorMessage: ''}
+    componentDidMount(){
         window.navigator.geolocation.getCurrentPosition(
-            (position) => console.log(position),
-            (err) => console.log(err)
+            position => this.setState({ lat: position.coords.latitude}),
+            err => this.setState({errorMessage: err.message})
         )
-        return(
-            <div className="ui container">
-                <SeasonDisplay />
-            </div>
-        );
+    }
+    render(){
+        if(this.state.errorMessage && !this.state.lat){
+            alert("We cannot get your location, please check your privacy settings to display the weather correctly.")
+            return <div>Error: {this.state.errorMessage}</div>;
+        }
+        if(!this.state.errorMessage && this.state.lat){
+            return <div><SeasonDisplay lat={this.state.lat} /></div>
+        }
+        return <div>Loading...</div>
     }
 }
 
